@@ -1,0 +1,31 @@
+<style>
+    .menu li{
+        list-style: none;
+        text-align: center;
+        float:left;
+        padding:12px;
+    }
+    .section-1{
+        background: #000;
+        color:#fff!important;
+    }
+    .menu li a{
+        color:#fff!important
+    }
+    </style>
+<div class="container-fluid section-1">
+    <div class="col-md-12">
+<ul class="menu">
+<li><a href="#/index">Index</a></li>
+<li><a href="#/about">About</a></li>
+<li><a href="#/contact">Contact</a></li>
+</ul>
+</div>
+</div>
+
+<div class="container" ng-init="names=[{'name':'Jani','age':'10'},{'name':'kiran','age':'10'}]">
+        <ul>
+            <li ng-repeat="x in names">{{x.name}} {{x.age}}</li>
+            
+        </ul>
+    </div>
