@@ -23,9 +23,33 @@
 </div>
 </div>
 
-<div class="container" ng-init="names=[{'name':'Jani','age':'10'},{'name':'kiran','age':'10'}]">
-        <ul>
-            <li ng-repeat="x in names">{{x.name}} {{x.age}}</li>
-            
-        </ul>
+<div class="container" ng-init="getdataasjson()">
+    <h1>Get datas from json:</h1>
+    <br/>
+    <span class="text-center"></span>
+    <select ng-model="sortBy" class="form-control">  
+        <option selected value="" >--- status ---</option>
+        <option ng-repeat="s in options" value="{{s.inner}}">{{s.outer}}</option>
+    </select>
+
+    <br/>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in data | orderBy:sortBy">
+
+                    <td>{{x.name}}</td>
+                        <td>{{x.age}}</td>
+
+                    </tr>
+                </tbody>
+        </table>
+
+        
     </div>

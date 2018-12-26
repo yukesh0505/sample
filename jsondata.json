@@ -1,0 +1,17 @@
+{
+   
+   "demo":[
+      {
+         "name":"yukesh",
+         "age":"22"
+      },
+      {
+         "name":"mano",
+         "age":"25"
+      },
+      {
+         "name":"shankar",
+         "age":"26"
+      }
+   ]
+}

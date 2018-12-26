@@ -40,8 +40,8 @@
     <div class="col-md-12">
 
 
-<select ng-model="home" class="form-control" ng-init="count=0" ng-bchange="count=count+1">
-    <option selected="selected"> ----select any----</option>
+<select class="form-control" ng-model="home" ng-init="count=0" ng-change="count++">
+        
 <option value="sky">Option 1</option>
 <option value="tomato">Option 2</option>
 </select>

@@ -1,4 +1,4 @@
-var app = angular.module("myapp", ['ngRoute']);
+var app = angular.module("myapp", ['ngRoute','ngStorage'],);
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/home', {
@@ -22,24 +22,26 @@ app.controller('ctrl1', function ($scope) {
     $scope.message = "bye";
     console.log($scope.disp);
 });
-app.controller('ctrl3', function ($scope) {
-    $scope.disp = "about";
-    $scope.message = "bye";
-    console.log($scope.disp);
-    $scope.array=[{
-        name:"srini",
-        age:"25"
-    },
-    {
-        name:"srini",
-        age:"25"
-    }]
+app.controller('ctrl3', function ($scope,$http) {
+    $scope.loading = "Loading...";
+    $scope.options = [{"outer":"Filter by Name","inner":"name"},{"outer":"Filter by Age","inner":"age"}];
+    $scope.getdataasjson = function(){
+    $scope.demo= [];
+    $http.get('jsondata.json').success(function(data) { 
+        $scope.data = data.demo;
+        console.log(data.demo);
+        $scope.loading = "";
+     }) 
+         
+    
+    }
 });
-app.controller('ctrl2', function ($scope) {
+app.controller('ctrl2', function ($scope,$localStorage) {
 
     $scope.show = function () {
-
-        $scope.name = "first name is " + $scope.fname + "<br/>,last name is " + $scope.lname;
+        localStorage.fname =  $scope.fname;
+        localStorage.lname =  $scope.lname; 
+        $scope.name = "first name is " + $scope.fname + ",last name is " + $scope.lname;
     }
 });
 
