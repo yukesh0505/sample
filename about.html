@@ -1,55 +1,87 @@
 <style>
-    .menu li{
+    .menu li {
         list-style: none;
         text-align: center;
-        float:left;
-        padding:12px;
+        float: left;
+        padding: 12px;
     }
-    .section-1{
+
+    .section-1 {
         background: #000;
-        color:#fff!important;
+        color: #fff!important;
     }
-    .menu li a{
-        color:#fff!important
+
+    .menu li a {
+        color: #fff!important
     }
-    </style>
+</style>
 <div class="container-fluid section-1">
     <div class="col-md-12">
-<ul class="menu">
-<li><a href="#/index">Index</a></li>
-<li><a href="#/about">About</a></li>
-<li><a href="#/contact">Contact</a></li>
-</ul>
-</div>
+        <ul class="menu">
+            <li>
+                <a href="#/index">Index</a>
+            </li>
+            <li>
+                <a href="#/about">About</a>
+            </li>
+            <li>
+                <a href="#/contact">Contact</a>
+            </li>
+        </ul>
+    </div>
 </div>
 
 <div class="container" ng-init="getdataasjson()">
     <h1>Get datas from json:</h1>
     <br/>
     <span class="text-center"></span>
-    <select ng-model="sortBy" class="form-control">  
-        <option selected value="" >--- status ---</option>
+    <select ng-model="sortBy" class="form-control">
+        <option selected value="">--- status ---</option>
         <option ng-repeat="s in options" value="{{s.inner}}">{{s.outer}}</option>
     </select>
 
     <br/>
 
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped table-hover parenttable" id="datatable">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Age</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="x in data | orderBy:sortBy">
+                <th>First Name</th>
+                <th>Second Name</th>
+                <th>Email</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in demo | orderBy:sortBy" class="childrow">
+                
+                <td><input ng-model="x.firstname" type="text" class="form-control" disabled value="{{x.firstname}}"></td>
+                <td><input ng-model="x.lastname" type="text" class="form-control" disabled value="{{x.lastname}}"></td>
+                <td><input ng-model="x.email" type="email" class="form-control" disabled value="{{x.email}}"></td>
+                <td>
+                    <button class="btn btn-primary edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                    <button class="btn btn-primary save" ng-click="save(x,x._id)">Save</button>
+                    <button ng-click="deletedata(x._id)" class="btn btn-primary">X</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-                    <td>{{x.name}}</td>
-                        <td>{{x.age}}</td>
 
-                    </tr>
-                </tbody>
-        </table>
-
-        
+</div>
+<div class="container">
+    <div class="col-md-12">
+        <div class="form-group">
+            <button class="btn btn-danger" ng-click="callback()">Call Back</button>
+            </div>
+        </div>
     </div>
+<script>
+    $('.save').hide();
+     $(document).on('click', '.edit', function(e){
+         e.preventDefault();
+         $(this).closest('.childrow').find('input').prop("disabled",false);
+         $(this).closest('.childrow').find('.edit').hide();
+         $(this).closest('.childrow').find('.save').show();
+        
+    });
+    </script>

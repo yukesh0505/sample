@@ -13,6 +13,14 @@
     .menu li a{
         color:#fff!important
     }
+    .container{
+        position: absolute;
+    width: 400px;
+    left: 36%;
+    top: 15%;
+    padding:50px; 
+    box-shadow: 0 0 8px rgba(0,0,0,0.5);
+    }
     </style>
 <div class="container-fluid section-1">
     <div class="col-md-12">
@@ -27,20 +35,31 @@
 <div class="container">
     <form ng-submit="show()">
         <div class="form-group">
-            first name<br/>
-            <input type="text" ng-model="fname" class="form-control" required>
+            First Name<br/>
+            <input type="text" ng-model="fname" class="form-control" required placeholder="First Name"> 
             </div>
 
             <div class="form-group">
-                second name<br/>
-                    <input type="text" ng-model="lname" class="form-control" required >
+                Second Name<br/>
+                    <input type="text" ng-model="lname" class="form-control" required placeholder="Second Name" >
                     </div>
+            
+                    <div class="form-group">
+                        Email Id<br/>
+                           <input type="email" ng-model="email" class="form-control" required placeholder="Email" >
+                            </div>
 
+            <div class="form-group" > 
+                <input type="checkbox" required ng-model="justtry">&nbsp;Check Me
+                </div>
+                <div class="form-group" ng-show="justtry">
+                    <p>Just for testing</p>
+                    </div>
                     <div class="form-group1">
-                        <input type="submit" class="btn btn-primary form-control" value="submit" >
+                        <input type="submit" class="btn btn-primary form-control" value="Submit" >
                         </div>
                         </form>
 <div>
-<h3 class="text-uppercase">{{ name }}</h3>
+
     </div>
     </div>
